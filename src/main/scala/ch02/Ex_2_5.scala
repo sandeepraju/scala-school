@@ -4,7 +4,7 @@ object Ex_2_5 {
   def main(args: Array[String]): Unit = {
     val twox = (s: String) => s * 2
     val threex = (s: String) => s * 3
-    
+
     assert(compose(twox, threex)("") == "")
     assert(compose(twox, threex)("*") == "******")
   }
