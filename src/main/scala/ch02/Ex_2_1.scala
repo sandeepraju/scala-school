@@ -10,12 +10,14 @@ object Ex_2_1 {
     assert(fib(3) == 2)
     assert(fib(4) == 3)
     assert(fib(5) == 5)
+    assert(fib(6) == 8)
   }
 
   def fib(n: Int): Int = {
     @tailrec
     def fibNumbers(a: Int, b: Int, n: Int): Int = n match {
-      case 0 => a
+      case 0 => 0
+      case 1 => b
       case _ => fibNumbers(b, a + b, n - 1)
     }
 
