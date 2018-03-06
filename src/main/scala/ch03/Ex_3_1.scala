@@ -29,5 +29,7 @@ object Ex_3_1 {
       case Cons(x, Cons(y, Cons(3, Cons(4, _)))) => x + y
       case _ => 101
     }
+
+    println("x = $x")
   }
 }
