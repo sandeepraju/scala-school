@@ -89,4 +89,10 @@ object List {
   def sum2(ints: List[Int]): Int = foldLeft(ints, 0)(_ + _)
 
   def product2(ds: List[Double]): Double = foldLeft(ds, 1.0)(_ * _)
+
+  // Ex. 3.12
+  def reverse[A](as: List[A]): List[A] = foldLeft(as, Nil: List[A]) { (list, item) => Cons(item, list) }
+
+  // Ex. 3.13 (Hard)
+
 }
