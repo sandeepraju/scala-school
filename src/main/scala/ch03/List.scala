@@ -103,8 +103,21 @@ object List {
     foldRight(ls1, ls2) { (item, list) => Cons(item, list) }
 
   // Ex. 3.15 (Hard)
+  // Complexity: O(n) where n is the sum of number of elements of all lists
   def concat[A](ls: List[List[A]]): List[A] =
     foldLeft(ls, Nil:List[A]) { (acc, item) =>
       appendUsingFoldRight(acc, item)
     }
+
+  // Ex. 3.16
+  def transformByAddingOne(ls: List[Int]): List[Int] =
+//    ls match {
+//    case Nil => Nil
+//    case Cons(x, xs) => Cons(x + 1, transformByAddingOne(xs))
+//  }
+  foldRight(ls, Nil:List[Int]) { (item, acc) => Cons(item + 1, acc)}
+
+  // Ex. 3.17
+  def transformDoubleToString(ls: List[Double]): List[String] =
+    foldRight(ls, Nil:List[String]) { (item, acc) => Cons(item.toString, acc) }
 }
