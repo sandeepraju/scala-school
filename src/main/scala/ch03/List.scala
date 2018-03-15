@@ -84,4 +84,9 @@ object List {
     case Nil => z
     case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
   }
+
+  // Ex. 3.11
+  def sum2(ints: List[Int]): Int = foldLeft(ints, 0)(_ + _)
+
+  def product2(ds: List[Double]): Double = foldLeft(ds, 1.0)(_ * _)
 }
