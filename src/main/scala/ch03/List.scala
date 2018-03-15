@@ -20,8 +20,15 @@ object List {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail : _*))
 
+  // Ex 3.2
   def tail[A](ls: List[A]): List[A] = ls match {
     case Nil => throw new IllegalArgumentException("List cannot be empty")
     case Cons(_, t) => t
+  }
+
+  // Ex 3.3
+  def setHead[A](ls: List[A], h: A): List[A] = ls match {
+    case Nil => Cons(h, Nil)
+    case Cons(_, t) => Cons(h, t)
   }
 }
