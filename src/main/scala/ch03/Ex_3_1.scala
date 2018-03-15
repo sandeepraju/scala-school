@@ -30,6 +30,6 @@ object Ex_3_1 {
       case _ => 101
     }
 
-    println("x = $x")
+    assert(x == 3)
   }
 }
