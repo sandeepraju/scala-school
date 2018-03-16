@@ -120,4 +120,24 @@ object List {
   // Ex. 3.17
   def transformDoubleToString(ls: List[Double]): List[String] =
     foldRight(ls, Nil:List[String]) { (item, acc) => Cons(item.toString, acc) }
+
+  // Ex. 3.18
+  def map[A, B](as: List[A])(f: A => B): List[B] = ???
+
+  // Ex. 3.19
+  def filter[A](as: List[A])(f: A => Boolean): List[A] = ???
+
+  // Ex. 3.20
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] = ???
+
+  // Ex. 3.21
+  // Implement filter using flatMap
+  def filter2[A](as: List[A])(f: A => Boolean): List[A] = ???
+
+  // Ex. 3.22
+  // TODO: ask how to define type that can be added (addable)
+  def addCorresponding(ls1: List[Int], ls2: List[Int]): List[Int] = ???
+
+  // Ex. 3.23
+  def zipWith[A](ls1: List[A], ls2: List[A]): List[A] = ???
 }
