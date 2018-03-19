@@ -129,7 +129,8 @@ object List {
     foldRight(as, Nil: List[A]) { (item, acc) => if (f(item)) Cons(item, acc) else acc }
 
   // Ex. 3.20
-  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] = ???
+  def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
+    foldLeft(map(as)(f), Nil: List[B]) { (acc, item) => append(acc, item) }
 
   // Ex. 3.21
   // Implement filter using flatMap
