@@ -122,7 +122,7 @@ object List {
     foldRight(ls, Nil:List[String]) { (item, acc) => Cons(item.toString, acc) }
 
   // Ex. 3.18
-  def map[A, B](as: List[A])(f: A => B): List[B] = ???
+  def map[A, B](as: List[A])(f: A => B): List[B] = foldRight(as, Nil: List[B]) { (item, acc) => Cons(f(item), acc)}
 
   // Ex. 3.19
   def filter[A](as: List[A])(f: A => Boolean): List[A] = ???
