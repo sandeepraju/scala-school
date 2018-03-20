@@ -134,12 +134,17 @@ object List {
 
   // Ex. 3.21
   // Implement filter using flatMap
-  def filter2[A](as: List[A])(f: A => Boolean): List[A] = ???
+  def filter2[A](as: List[A])(f: A => Boolean): List[A] =
+    flatMap(as)(item => if (f(item)) List(item) else Nil)
 
   // Ex. 3.22
   // TODO: ask how to define type that can be added (addable)
-  def addCorresponding(ls1: List[Int], ls2: List[Int]): List[Int] = ???
+  def addCorresponding(ls1: List[Int], ls2: List[Int]): List[Int] = (ls1, ls2) match {
+    case (Nil, Nil) => Nil
+    case (Cons(h1, t1), Cons(h2, t2)) => Cons(h1 + h2, addCorresponding(t1, t2))
+    case (_, _) => throw new IllegalArgumentException("Both the lists have to be of equal length")
+  }
 
   // Ex. 3.23
-  def zipWith[A](ls1: List[A], ls2: List[A]): List[A] = ???
+  def zipWith[A,B,C](a: List[A], b: List[B])(f: (A,B) => C): List[C] = ???
 }
