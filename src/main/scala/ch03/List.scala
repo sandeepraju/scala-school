@@ -146,5 +146,9 @@ object List {
   }
 
   // Ex. 3.23
-  def zipWith[A,B,C](a: List[A], b: List[B])(f: (A,B) => C): List[C] = ???
+  def zipWith[A,B,C](ls1: List[A], ls2: List[B])(f: (A,B) => C): List[C] = (ls1, ls2) match {
+    case (Nil, Nil) => Nil: List[C]
+    case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
+    case (_, _) => throw new IllegalArgumentException("Both the lists have to be of equal length")
+  }
 }
