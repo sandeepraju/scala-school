@@ -161,4 +161,33 @@ object List {
     case (Cons(h1, t1), Cons(h2, t2)) => Cons(f(h1, h2), zipWith(t1, t2)(f))
     case (_, _) => throw new IllegalArgumentException("Both the lists have to be of equal length")
   }
+
+  def take[A](ls: List[A], n: Int): List[A] = ls match {
+    case Nil => Nil
+    case _ if n == 0 => Nil
+    case Cons(h, t) => Cons(h, take(t, n - 1))
+  }
+
+  // Ex. 3.24
+  // NOTE: Here, the meaning of subsequence is different from how it
+  // is used in math. Here, subsequence just means contiguous sequence
+  // (kind of similar to substring... rather sublist?)
+  // The most optimal algorithm is the KMP; complexity: O(n+k)
+  // where n -> length of string (or the text)
+  // and k -> length of substring (query) being searched
+  // The algorithm implemented below is sub optimal (naive)
+  // O(n*2k) == O(n*k)
+  def hasSubsequence[A](sup: List[A], sub: List[A]): Boolean = {
+
+    val lenSub = List.length(sub)
+
+    def hs(ls: List[A]): Boolean = ls match {
+      case Nil => false
+      case Cons(_, t) =>
+        if (List.take(ls, lenSub) == sub) true
+        else hs(t)
+    }
+
+    if (lenSub > List.length(sup)) false else hs(sup)
+  }
 }
