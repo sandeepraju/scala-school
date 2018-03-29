@@ -140,7 +140,7 @@ object List {
 
   // The most intuitive implementation of flatMap: map, then flatten it
   def flatMapWithoutFold2[A, B](as: List[A])(f: A => List[B]): List[B] =
-    List.concat(List.map(as)(f))
+    concat(map(as)(f))
 
   // Ex. 3.21
   // Implement filter using flatMap
