@@ -133,6 +133,15 @@ object List {
   def flatMap[A, B](as: List[A])(f: A => List[B]): List[B] =
     foldLeft(map(as)(f), Nil: List[B]) { (acc, item) => append(acc, item) }
 
+  def flatMapWithoutFold[A, B](as: List[A])(f: A => List[B]): List[B] = as match {
+    case Nil => Nil
+    case Cons(h, t) => append(f(h), flatMapWithoutFold(t)(f))
+  }
+
+  // The most intuitive implementation of flatMap: map, then flatten it
+  def flatMapWithoutFold2[A, B](as: List[A])(f: A => List[B]): List[B] =
+    List.concat(List.map(as)(f))
+
   // Ex. 3.21
   // Implement filter using flatMap
   def filter2[A](as: List[A])(f: A => Boolean): List[A] =
