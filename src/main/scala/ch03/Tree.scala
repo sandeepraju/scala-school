@@ -18,11 +18,20 @@ object Tree {
   }
 
   // Ex. 3.27
-  def depth[A](tree: Tree[A]): Int = ???
+  def depth[A](tree: Tree[A]): Int = tree match {
+    case Leaf(_) => 1
+    case Branch(l, r) => (depth(l) max depth(r)) + 1
+  }
 
   // Ex. 3.28
-  def map[A, B](tree: Tree[A])(f: A => B): Tree[B] = ???
+  def map[A, B](tree: Tree[A])(f: A => B): Tree[B] = tree match {
+    case Leaf(value) => Leaf(f(value))
+    case Branch(l, r) => Branch(map(l)(f), map(r)(f))
+  }
 
   // Ex. 3.29
-  def fold[A, B](tree: Tree[A], acc: B)(f: (A, B) => B): B = ???
+  def fold[A, B](tree: Tree[A], acc: B)(f: (A, B) => B): B = tree match {
+    case Leaf(value) => f(value, acc)
+    case Branch(l, r) => fold(r, fold(l, acc)(f))(f)
+  }
 }
