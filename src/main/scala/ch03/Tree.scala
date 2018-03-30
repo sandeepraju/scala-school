@@ -12,7 +12,10 @@ object Tree {
   }
 
   // Ex. 3.26
-  def maximum(tree: Tree[Int]): Int = ???
+  def maximum(tree: Tree[Int]): Int = tree match {
+    case Leaf(value) => value
+    case Branch(l, r) => maximum(l) max maximum(r)
+  }
 
   // Ex. 3.27
   def depth[A](tree: Tree[A]): Int = ???
